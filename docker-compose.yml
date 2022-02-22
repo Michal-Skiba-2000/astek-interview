@@ -14,7 +14,8 @@ services:
   emenu-rest-api:
     image: emenu-rest-api-image
     container_name: emenu-rest-api
-    command: bash -c "python manage.py migrate &&
+    command: bash -c "pylint /emenu --ignore manage.py &&
+                      python manage.py migrate &&
                       python manage.py runserver 0.0.0.0:8000"
     ports:
       - "8000:8000"
