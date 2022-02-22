@@ -1,0 +1,22 @@
+version: "3.9"
+
+services:
+  emenu-db:
+    image: postgres:latest
+    container_name: emenu-db
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=emenu-db
+      - POSTGRES_USER=astek
+      - POSTGRES_PASSWORD=astek
+
+  emenu-rest-api:
+    image: emenu-rest-api-image
+    container_name: emenu-rest-api
+    command: bash -c "python manage.py migrate &&
+                      python manage.py runserver 0.0.0.0:8000"
+    ports:
+      - "8000:8000"
+    depends_on:
+      - emenu-db
