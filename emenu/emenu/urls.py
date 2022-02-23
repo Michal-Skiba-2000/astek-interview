@@ -15,10 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework_swagger.views import get_swagger_view
 
 from account import urls as account_urls
 
+
+schema_view = get_swagger_view(title='Emenu API')
+
+
 urlpatterns = [
+    path('', schema_view),
     path('admin/', admin.site.urls),
     path('account/', include(account_urls)),
 ]
