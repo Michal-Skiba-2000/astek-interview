@@ -8,3 +8,8 @@ To start up application run command:
 ```
 sudo docker-compose up --no-build
 ```
+
+To create superuser(admin):
+```
+sudo docker exec -it emenu-rest-api python manage.py createsuperuser
+```
