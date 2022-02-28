@@ -143,17 +143,12 @@ REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
 }
 
-# SWAGGER_SETTINGS = {
-    # 'USE_SESSION_AUTH': False,
-    # 'is_authenticated': True,
-    # 'SECURITY_DEFINITIONS': {
-    #     'Token': {
-    #         'type': 'apiKey',
-    #         'in': 'header',
-    #         'name': 'Token'
-    #     }
-    # },
-# }
-
 LOGIN_URL = '/admin/login/?next=/'
 LOGOUT_URL = '/admin/logout/?next=/'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'email_host_user@gmail.com'  # TBD
+EMAIL_HOST_PASSWORD = 'email_host_password'  # TBD
+EMAIL_PORT = 587
