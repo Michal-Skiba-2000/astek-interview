@@ -15,8 +15,8 @@ class Migration(migrations.Migration):
             name='Dish',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=32)),
-                ('description', models.CharField(max_length=512)),
+                ('name', models.CharField(max_length=128)),
+                ('description', models.CharField(max_length=1024)),
                 ('price', models.DecimalField(decimal_places=2, max_digits=7)),
                 ('preparation_time_in_minutes', models.IntegerField()),
                 ('created', models.DateTimeField(auto_now_add=True)),
@@ -31,8 +31,8 @@ class Migration(migrations.Migration):
             name='Menu',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=32, unique=True)),
-                ('description', models.CharField(max_length=512)),
+                ('name', models.CharField(max_length=128, unique=True)),
+                ('description', models.CharField(max_length=1024)),
                 ('created', models.DateTimeField(auto_now_add=True)),
                 ('updated', models.DateTimeField(auto_now=True)),
                 ('dishes', models.ManyToManyField(related_name='menus', to='menu.Dish')),

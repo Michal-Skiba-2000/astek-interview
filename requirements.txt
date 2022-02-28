@@ -1,4 +1,6 @@
 djangorestframework
 django-rest-swagger
+django-filter
 psycopg2
 pylint
+coverage

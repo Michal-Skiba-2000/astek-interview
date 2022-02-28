@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'rest_framework_swagger',
     'menu',
     'account',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -89,9 +90,6 @@ DATABASES = {
         'PASSWORD': 'astek',
         'HOST': 'emenu-db',
         'PORT': 5432,
-        'TEST': {
-            'NAME': 'emenu-db-test',
-        },
     }
 }
 
@@ -137,4 +135,25 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-REST_FRAMEWORK = {'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'}
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',
+    ),
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
+}
+
+# SWAGGER_SETTINGS = {
+    # 'USE_SESSION_AUTH': False,
+    # 'is_authenticated': True,
+    # 'SECURITY_DEFINITIONS': {
+    #     'Token': {
+    #         'type': 'apiKey',
+    #         'in': 'header',
+    #         'name': 'Token'
+    #     }
+    # },
+# }
+
+LOGIN_URL = '/admin/login/?next=/'
+LOGOUT_URL = '/admin/logout/?next=/'

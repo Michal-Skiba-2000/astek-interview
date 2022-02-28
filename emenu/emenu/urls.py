@@ -18,6 +18,7 @@ from django.urls import path, include
 from rest_framework_swagger.views import get_swagger_view
 
 from account import urls as account_urls
+from menu import urls as menu_urls
 
 
 schema_view = get_swagger_view(title='Emenu API')
@@ -26,5 +27,6 @@ schema_view = get_swagger_view(title='Emenu API')
 urlpatterns = [
     path('', schema_view),
     path('admin/', admin.site.urls),
-    path('account/', include(account_urls)),
+    path('account/', include(account_urls, 'account')),
+    path('menu/', include(menu_urls, 'menu')),
 ]
